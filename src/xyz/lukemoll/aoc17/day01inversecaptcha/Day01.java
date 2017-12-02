@@ -5,7 +5,7 @@ import xyz.lukemoll.aoc17.utils.PuzzleInputReader;
 public class Day01 {
 
 	public static void main(String[] args) {
-		String input = PuzzleInputReader.getPuzzleInput("day01.txt");
+		String input = PuzzleInputReader.getPuzzleInputLine("day01.txt");
 		System.out.println("Part One:\t" + getSumNext(input));
 		System.out.println("Part Two:\t" + getSumOpposite(input));
 	}
