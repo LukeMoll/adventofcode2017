@@ -72,7 +72,7 @@ public class Day10 {
 	public static String toHexString(int[] denseHash) {
 		StringBuilder output = new StringBuilder(denseHash.length * 2);
 		for(int i : denseHash) {
-			output.append(Integer.toHexString(i));
+			output.append((i<16?"0":"") + Integer.toHexString(i));
 		}
 		return output.toString();
 	}
