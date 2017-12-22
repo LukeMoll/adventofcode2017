@@ -67,7 +67,7 @@ public class Day19 {
 		}
 	}
 	
-	private static class Direction {
+	public static class Direction {
 		public final int X, Y;
 		private Direction(int x,int y) {this.X = x; this.Y = y;}
 		public static final  Direction UP = new Direction(0,-1),
@@ -82,5 +82,7 @@ public class Day19 {
 					this.Y == ((Direction) obj).Y;
 		}
 		public Direction opposite() {return new Direction(this.X*-1, this.Y*-1);}
+		public Direction left() {return new Direction(this.Y, -this.X);}
+		public Direction right() {return new Direction(-this.Y, this.X);}
 	}
 }
