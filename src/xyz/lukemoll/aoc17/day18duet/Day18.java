@@ -11,18 +11,18 @@ import xyz.lukemoll.aoc17.utils.PuzzleInputReader;
 
 public class Day18 {
 
-	static abstract class AbstractMachine {
+	public static abstract class AbstractMachine {
 		boolean running = false;
-		int programcounter = 0;
+		public int programcounter = 0;
 		// Addresses happen only to be single characters, but we're prepared anyway :D
-		Map<String, Long> registers = new HashMap<String, Long>();
+		public Map<String, Long> registers = new HashMap<String, Long>();
 		Consumer<AbstractMachine>[] program;
 		
-		abstract void snd(long value);
-		abstract void rcv(String op1);
+		public abstract void snd(long value);
+		public abstract void rcv(String op1);
 		
 		Pattern immediatePattern = Pattern.compile("^-?\\d+$"); 
-		long getRegisterOrValue(String input) {
+		public long getRegisterOrValue(String input) {
 			Matcher m = immediatePattern.matcher(input);
 			if(m.matches()) {
 				return Integer.parseInt(input);
@@ -57,13 +57,13 @@ public class Day18 {
 		}
 
 		@Override
-		void snd(long value) {
+		public void snd(long value) {
 			this.soundfrequency = value;
 			
 		}
 
 		@Override
-		void rcv(String op1) {
+		public void rcv(String op1) {
 			if(this.getRegisterOrValue(op1) != 0) {
 				System.out.println("Recovered frequency: " + this.soundfrequency);
 				this.running = false;
@@ -92,14 +92,14 @@ public class Day18 {
 		}
 		
 		@Override
-		void snd(long value) {
+		public void snd(long value) {
 			partner.messageQueue.add(new Long(value));
 			partner.waiting = false;
 			this.messagesSent++;
 		}
 
 		@Override
-		void rcv(String op1) {
+		public void rcv(String op1) {
 			Long value;
 			if(this.messageQueue.isEmpty()) {
 				if(partner.running && !partner.waiting ) {
